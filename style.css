@@ -1,0 +1,12 @@
+html, body, .paint, svg {
+  height: 100%;
+}
+
+svg {
+  border: solid 1px black;
+  width: 100%;
+}
+
+button.active {
+  opacity: 0.5;
+}
