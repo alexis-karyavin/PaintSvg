@@ -113,49 +113,6 @@ class Figure {
     elem.setAttributeNS(null, 'fill', '#'+Math.round(0xffffff * Math.random()).toString(16));
     this.svg.appendChild(elem);
   }
-  // initDrag() {
-  //   this.svg.onclick = null;
-  //   this.svg.onmousedown = startDrag
-  //   let elemDrag = null,
-  //       offset = null;
-  //   function startDrag(evt) {
-  //     elemDrag = evt.target;
-  //     if( elemDrag.dataset.draggable != "" ) return;
-
-  //     offset = getMousePosition(evt.clientX, evt.clientY, this);
-  //     if ( elemDrag.tagName == "rect" ) {
-  //       offset.x -= parseFloat(elemDrag.getAttributeNS(null, "x"));
-  //       offset.y -= parseFloat(elemDrag.getAttributeNS(null, "y"));
-  //     } else if ( elemDrag.tagName == "circle" ) {
-  //       offset.x -= parseFloat(elemDrag.getAttributeNS(null, "cx"));
-  //       offset.y -= parseFloat(elemDrag.getAttributeNS(null, "cy"));
-  //     }
-      
-  //     elemDrag.addEventListener('mousemove', drag.bind(this));
-  //     elemDrag.addEventListener('mouseup', endDrag);
-  //     elemDrag.addEventListener('mouseleave', endDrag);
-  //   }
-  //   function drag(evt, svg) {
-  //     if(elemDrag) {
-  //       evt.preventDefault();
-  //       let coord = getMousePosition(evt.clientX, evt.clientY, this);
-  //       if( elemDrag.tagName == "rect" ) {
-  //         elemDrag.setAttributeNS(null, "x", coord.x - offset.x);
-  //         elemDrag.setAttributeNS(null, "y", coord.y - offset.y);
-  //       } else if ( elemDrag.tagName == "circle" ) {
-  //         elemDrag.setAttributeNS(null, "cx", coord.x - offset.x);
-  //         elemDrag.setAttributeNS(null, "cy", coord.y - offset.y);
-  //       }
-        
-  //     }
-  //   }
-  //   function endDrag(evt) {
-  //     elemDrag = null;
-  //   }
-  // }
-  removeDrag() {
-    this.svg.onmousedown = null;
-  }
 }
 
 class Rect extends Figure {
@@ -192,7 +149,6 @@ let paint = new Paint(document.querySelector('.paint'));
 paint.createButton({
   title: "Select",
   onClick: (button) => {
-    // paint.currentElement.initDrag();
     paint.initDrag();
   }
 })
@@ -220,20 +176,4 @@ function getMousePosition(x,y, svg) {
     x: (x - CTM.e) / CTM.a,
     y: (y - CTM.f) / CTM.d
   };
-}
-
-class Picture {
-  constructor() {
-    this.listFigure = [];
-  }
-
-  add() {
-
-  }
-
-  draw() {
-
-  }
-
-  select() {}
 }
